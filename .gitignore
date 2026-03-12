@@ -1,6 +1,13 @@
+# Build results
+[Bin]
+[Obj]
 bin/
 obj/
+*.exe
+*.dll
+*.pdb
+
+# User-specific files
 *.user
-.vs/
 *.suo
-packages/
+.vs/
