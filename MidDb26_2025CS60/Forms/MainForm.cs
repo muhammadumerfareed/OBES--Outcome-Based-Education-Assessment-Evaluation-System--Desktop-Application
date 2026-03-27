@@ -21,6 +21,21 @@ namespace MidDb26_2025CS60
         {
             new ManageRubrics().ShowDialog();
         }
+
+        private void btnAssesments_Click(object sender, EventArgs e)
+        {
+            new Manageassessments().ShowDialog();
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            new Reports().ShowDialog();
+        }
+
+        private void btnEvaluations_Click(object sender, EventArgs e)
+        {
+            new MarkEvaluation().ShowDialog();
+        }
     }
 
-    }
+}

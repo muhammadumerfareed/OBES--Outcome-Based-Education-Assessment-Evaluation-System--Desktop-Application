@@ -88,7 +88,7 @@
             btnRubrics.TabIndex = 3;
             btnRubrics.Text = "📏 Manage Rubrics";
             btnRubrics.UseVisualStyleBackColor = true;
-            btnRubrics.Click += this.btnRubrics_Click;
+            btnRubrics.Click += btnRubrics_Click;
             // 
             // btnAssesments
             // 
@@ -102,6 +102,7 @@
             btnAssesments.TabIndex = 4;
             btnAssesments.Text = "📝 Manage Assessments";
             btnAssesments.UseVisualStyleBackColor = true;
+            btnAssesments.Click += btnAssesments_Click;
             // 
             // btnEvaluations
             // 
@@ -115,6 +116,7 @@
             btnEvaluations.TabIndex = 5;
             btnEvaluations.Text = "✅ Mark Evaluations";
             btnEvaluations.UseVisualStyleBackColor = true;
+            btnEvaluations.Click += btnEvaluations_Click;
             // 
             // btnReports
             // 
@@ -128,6 +130,7 @@
             btnReports.TabIndex = 6;
             btnReports.Text = "📄 Reports";
             btnReports.UseVisualStyleBackColor = true;
+            btnReports.Click += btnReports_Click;
             // 
             // MainForm
             // 
