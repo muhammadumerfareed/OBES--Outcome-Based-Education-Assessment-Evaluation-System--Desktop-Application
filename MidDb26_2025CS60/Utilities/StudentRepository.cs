@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using MidDb26_2025CS60.Models;
+using MidDb26_2025CS60.Utilities;
 
 namespace MidDb26_2025CS60.DAL
 {

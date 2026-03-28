@@ -1,6 +1,6 @@
 ﻿using System;
 using MySql.Data.MySqlClient;
-namespace MidDb26_2025CS60.DAL
+namespace MidDb26_2025CS60.Utilities
 {
     public class DatabaseHelper
     {

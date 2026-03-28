@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="DL\" />
     <Folder Include="Reports\" />
   </ItemGroup>
 
