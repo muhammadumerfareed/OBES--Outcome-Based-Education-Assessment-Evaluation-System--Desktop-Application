@@ -87,6 +87,7 @@ namespace MidDb26_2025CS60.Forms
             btnSearch.TabIndex = 2;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += btnSearch_Click;
             // 
             // separatorPanel
             // 
@@ -175,6 +176,7 @@ namespace MidDb26_2025CS60.Forms
             btnSave.TabIndex = 11;
             btnSave.Text = "Save Changes";
             btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
             // EditStudentForm
             // 

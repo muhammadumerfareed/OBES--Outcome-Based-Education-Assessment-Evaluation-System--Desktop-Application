@@ -30,7 +30,7 @@ namespace MidDb26_2025CS60.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             pnlHeader = new Panel();
             lblTitle = new Label();
             lblClassDate = new Label();
@@ -71,7 +71,7 @@ namespace MidDb26_2025CS60.Forms
             lblClassDate.AutoSize = true;
             lblClassDate.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblClassDate.ForeColor = Color.DimGray;
-            lblClassDate.Location = new Point(30, 95);
+            lblClassDate.Location = new Point(30, 97);
             lblClassDate.Name = "lblClassDate";
             lblClassDate.Size = new Size(105, 28);
             lblClassDate.TabIndex = 1;
@@ -81,9 +81,9 @@ namespace MidDb26_2025CS60.Forms
             // 
             dtpClassDate.CalendarFont = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dtpClassDate.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dtpClassDate.Location = new Point(115, 92);
+            dtpClassDate.Location = new Point(141, 97);
             dtpClassDate.Name = "dtpClassDate";
-            dtpClassDate.Size = new Size(390, 34);
+            dtpClassDate.Size = new Size(352, 34);
             dtpClassDate.TabIndex = 2;
             // 
             // btnLoad
@@ -92,26 +92,27 @@ namespace MidDb26_2025CS60.Forms
             btnLoad.FlatStyle = FlatStyle.Flat;
             btnLoad.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLoad.ForeColor = Color.White;
-            btnLoad.Location = new Point(515, 89);
+            btnLoad.Location = new Point(499, 95);
             btnLoad.Name = "btnLoad";
             btnLoad.Size = new Size(135, 37);
             btnLoad.TabIndex = 3;
             btnLoad.Text = "Load Students";
             btnLoad.UseVisualStyleBackColor = false;
+            btnLoad.Click += btnLoad_Click;
             // 
             // dgvAttendance
             // 
             dgvAttendance.AllowUserToAddRows = false;
             dgvAttendance.AllowUserToDeleteRows = false;
             dgvAttendance.BackgroundColor = Color.White;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.MidnightBlue;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.MidnightBlue;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvAttendance.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.MidnightBlue;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.MidnightBlue;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvAttendance.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvAttendance.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAttendance.Columns.AddRange(new DataGridViewColumn[] { colRegNo, colName, colStatus });
             dgvAttendance.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -160,6 +161,7 @@ namespace MidDb26_2025CS60.Forms
             btnSave.TabIndex = 5;
             btnSave.Text = "Save Attendance";
             btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
             // Attendance
             // 

@@ -84,7 +84,7 @@
             btnRubrics.ForeColor = Color.White;
             btnRubrics.Location = new Point(37, 302);
             btnRubrics.Name = "btnRubrics";
-            btnRubrics.Size = new Size(273, 60);
+            btnRubrics.Size = new Size(311, 60);
             btnRubrics.TabIndex = 3;
             btnRubrics.Text = "📏 Manage Rubrics";
             btnRubrics.UseVisualStyleBackColor = true;
@@ -96,7 +96,7 @@
             btnAssesments.FlatStyle = FlatStyle.Flat;
             btnAssesments.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAssesments.ForeColor = Color.White;
-            btnAssesments.Location = new Point(421, 302);
+            btnAssesments.Location = new Point(404, 302);
             btnAssesments.Name = "btnAssesments";
             btnAssesments.Size = new Size(345, 60);
             btnAssesments.TabIndex = 4;
@@ -110,9 +110,9 @@
             btnEvaluations.FlatStyle = FlatStyle.Flat;
             btnEvaluations.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEvaluations.ForeColor = Color.White;
-            btnEvaluations.Location = new Point(47, 397);
+            btnEvaluations.Location = new Point(37, 397);
             btnEvaluations.Name = "btnEvaluations";
-            btnEvaluations.Size = new Size(263, 60);
+            btnEvaluations.Size = new Size(311, 60);
             btnEvaluations.TabIndex = 5;
             btnEvaluations.Text = "✅ Mark Evaluations";
             btnEvaluations.UseVisualStyleBackColor = true;
@@ -124,9 +124,9 @@
             btnReports.FlatStyle = FlatStyle.Flat;
             btnReports.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnReports.ForeColor = Color.White;
-            btnReports.Location = new Point(455, 397);
+            btnReports.Location = new Point(404, 397);
             btnReports.Name = "btnReports";
-            btnReports.Size = new Size(311, 60);
+            btnReports.Size = new Size(345, 60);
             btnReports.TabIndex = 6;
             btnReports.Text = "📄 Reports";
             btnReports.UseVisualStyleBackColor = true;

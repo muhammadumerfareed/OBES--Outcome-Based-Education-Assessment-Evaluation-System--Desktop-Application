@@ -116,7 +116,7 @@ namespace MidDb26_2025CS60.Forms
             pnlRows.Name = "pnlRows";
             pnlRows.Size = new Size(658, 290);
             pnlRows.TabIndex = 1;
-            pnlRows.WrapContents = false;
+            pnlRows.WrapContents = false;           
             // 
             // pnlColumnHeaders
             // 

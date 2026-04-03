@@ -87,7 +87,6 @@ namespace MidDb26_2025CS60.Forms
             pnlInfo.Name = "pnlInfo";
             pnlInfo.Size = new Size(850, 55);
             pnlInfo.TabIndex = 1;
-        
             // 
             // lblAssessmentName
             // 
@@ -103,7 +102,7 @@ namespace MidDb26_2025CS60.Forms
             // 
             lblMarksInfo.AutoSize = true;
             lblMarksInfo.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblMarksInfo.Location = new Point(450, 14);
+            lblMarksInfo.Location = new Point(425, 14);
             lblMarksInfo.Name = "lblMarksInfo";
             lblMarksInfo.Size = new Size(414, 28);
             lblMarksInfo.TabIndex = 1;
@@ -196,6 +195,7 @@ namespace MidDb26_2025CS60.Forms
             lnkAddQuestion.TabIndex = 4;
             lnkAddQuestion.TabStop = true;
             lnkAddQuestion.Text = "+ add question";
+            lnkAddQuestion.LinkClicked += lnkAddQuestion_LinkClicked;
             // 
             // pnlMarksUsed
             // 

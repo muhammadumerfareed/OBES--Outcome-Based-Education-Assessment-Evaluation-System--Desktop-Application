@@ -164,6 +164,7 @@
             btnSave.TabIndex = 12;
             btnSave.Text = "Save Student";
             btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
             // pnlHeader
             // 
@@ -198,7 +199,6 @@
             lblRequired.Size = new Size(155, 25);
             lblRequired.TabIndex = 14;
             lblRequired.Text = "* = required fields";
-           
             // 
             // AddStudent
             // 

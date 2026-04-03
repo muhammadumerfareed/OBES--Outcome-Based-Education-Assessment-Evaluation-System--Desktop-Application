@@ -82,6 +82,7 @@ namespace MidDb26_2025CS60.Forms
             btnSearch.TabIndex = 2;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += btnSearch_Click;
             // 
             // lvResult
             // 

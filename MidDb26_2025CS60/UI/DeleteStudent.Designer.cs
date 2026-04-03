@@ -96,10 +96,11 @@ namespace MidDb26_2025CS60.Forms
             btnFind.ForeColor = Color.White;
             btnFind.Location = new Point(480, 110);
             btnFind.Name = "btnFind";
-            btnFind.Size = new Size(110, 37);
+            btnFind.Size = new Size(110, 42);
             btnFind.TabIndex = 3;
             btnFind.Text = "Find";
             btnFind.UseVisualStyleBackColor = false;
+            btnFind.Click += btnFind_Click;
             // 
             // pnlResult
             // 
@@ -146,6 +147,7 @@ namespace MidDb26_2025CS60.Forms
             btnDelete.TabIndex = 5;
             btnDelete.Text = "Confirm Delete";
             btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
             // 
             // pnlWarning
             // 

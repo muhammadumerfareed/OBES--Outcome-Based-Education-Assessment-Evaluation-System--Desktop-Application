@@ -97,7 +97,7 @@ namespace MidDb26_2025CS60.Forms
             lblSelectCLO.AutoSize = true;
             lblSelectCLO.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblSelectCLO.ForeColor = Color.DimGray;
-            lblSelectCLO.Location = new Point(10, 15);
+            lblSelectCLO.Location = new Point(16, 14);
             lblSelectCLO.Name = "lblSelectCLO";
             lblSelectCLO.Size = new Size(108, 28);
             lblSelectCLO.TabIndex = 0;
@@ -107,9 +107,9 @@ namespace MidDb26_2025CS60.Forms
             // 
             cboCLO.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCLO.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cboCLO.Location = new Point(100, 12);
+            cboCLO.Location = new Point(130, 10);
             cboCLO.Name = "cboCLO";
-            cboCLO.Size = new Size(490, 36);
+            cboCLO.Size = new Size(464, 36);
             cboCLO.TabIndex = 1;
             // 
             // btnLoadCLO
@@ -120,7 +120,7 @@ namespace MidDb26_2025CS60.Forms
             btnLoadCLO.ForeColor = Color.White;
             btnLoadCLO.Location = new Point(600, 10);
             btnLoadCLO.Name = "btnLoadCLO";
-            btnLoadCLO.Size = new Size(110, 32);
+            btnLoadCLO.Size = new Size(110, 40);
             btnLoadCLO.TabIndex = 2;
             btnLoadCLO.Text = "Load Rubrics";
             btnLoadCLO.UseVisualStyleBackColor = false;
