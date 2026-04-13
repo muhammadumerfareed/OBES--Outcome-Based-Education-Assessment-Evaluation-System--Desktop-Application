@@ -54,13 +54,15 @@ namespace MidDb26_2025CS60.Forms
                 Panel compRow = new Panel { Location = new System.Drawing.Point(5, y), Size = new System.Drawing.Size(835, 45), BackColor = System.Drawing.Color.White };
                 Label lComp = new Label { Text = row["Name"].ToString(), Location = new System.Drawing.Point(10, 12), Size = new System.Drawing.Size(180, 25) };
                 string rd = row["RubricDetails"].ToString();
-                Label lRubric = new Label { Text = rd.Length > 20 ? rd.Substring(0, 20) + "..." : rd, Location = new System.Drawing.Point(200, 12), Size = new System.Drawing.Size(180, 25), ForeColor = System.Drawing.Color.DimGray };
+                Label lRubric = new Label { Text = rd.Length > 20 ? rd.Substring(0, 20) + "..." : rd, Location = new System.Drawing.Point(300, 12), Size = new System.Drawing.Size(180, 25), ForeColor = System.Drawing.Color.DimGray };
                 int maxLevel = levelBL.GetMaxLevel(rubricId);
-                Label lMax = new Label { Text = $"Max:{maxLevel}", Location = new System.Drawing.Point(390, 12), Size = new System.Drawing.Size(70, 25) };
-                ComboBox cboLevel = new ComboBox { Location = new System.Drawing.Point(470, 10), Size = new System.Drawing.Size(220, 28), DropDownStyle = ComboBoxStyle.DropDownList };
-                DataTable levels = levelBL.GetByRubric(rubricId);
+                Label lMax = new Label { Text = $"Max:{maxLevel}", Location = new System.Drawing.Point(500, 12), Size = new System.Drawing.Size(70, 25) };
+                ComboBox cboLevel = new ComboBox { Location = new System.Drawing.Point(600, 10), Size = new System.Drawing.Size(220, 28), DropDownStyle = ComboBoxStyle.DropDownList };
+                DataTable levels = levelBL.GetByRubric(rubricId).Copy();
                 cboLevel.DataSource = levels; cboLevel.DisplayMember = "Details"; cboLevel.ValueMember = "Id";
-                Label lMarks = new Label { Text = "—", Location = new System.Drawing.Point(700, 12), Size = new System.Drawing.Size(70, 25), ForeColor = System.Drawing.Color.FromArgb(30, 50, 90) };
+                cboLevel.DataSource = levels;
+                cboLevel.SelectedIndex = -1;
+                Label lMarks = new Label { Text = "—", Location = new System.Drawing.Point(0, 12), Size = new System.Drawing.Size(70, 25), ForeColor = System.Drawing.Color.FromArgb(30, 50, 90) };
                 int capMax = maxLevel, capMarks = compMarks;
                 cboLevel.SelectedIndexChanged += (s, ev) => {
                     if (cboLevel.SelectedItem == null) return;

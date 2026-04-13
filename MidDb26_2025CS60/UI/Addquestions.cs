@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using MidDb26_2025CS60.BL;
 
@@ -16,12 +18,26 @@ namespace MidDb26_2025CS60.Forms
         public AddQuestions(int assessmentId, string assessmentTitle, int totalMarks)
         {
             InitializeComponent();
-            lnkAddQuestion.LinkClicked += (s, ev) => AddQuestionRow(0, "", 0, 0);
             this.assessmentId = assessmentId; this.totalMarks = totalMarks;
             lblAssessmentName.Text = $"Assessment: {assessmentTitle}";
-            lnkAddQuestion.LinkClicked += new LinkLabelLinkClickedEventHandler(lnkAddQuestion_LinkClicked);
             UpdateMarksLabel(0);
+        }
 
+        private void ReNumberRows()
+        {
+            int i = 1;
+            foreach (Control row in pnlQuestionsBody.Controls)
+            {
+                foreach (Control c in row.Controls)
+                {
+                    if (c is Label lbl && lbl.Text.All(char.IsDigit))
+                    {
+                        lbl.Text = i.ToString();
+                        break;
+                    }
+                }
+                i++;
+            }
         }
 
         protected override void OnLoad(EventArgs e)
@@ -38,35 +54,94 @@ namespace MidDb26_2025CS60.Forms
 
         private void AddQuestionRow(int compId, string name, int rubricId, int marks)
         {
-            Panel row = new Panel { Size = new System.Drawing.Size(840, 45), BackColor = System.Drawing.Color.White, Margin = new Padding(2) };
-            Label lNum = new Label { Text = (questionRows.Count + 1).ToString(), Location = new System.Drawing.Point(5, 12), Size = new System.Drawing.Size(30, 25) };
-            TextBox txtName = new TextBox { Text = name, Location = new System.Drawing.Point(40, 10), Size = new System.Drawing.Size(260, 28), PlaceholderText = "e.g. Question 1" };
-            ComboBox cboRubric = new ComboBox { Location = new System.Drawing.Point(310, 10), Size = new System.Drawing.Size(280, 28), DropDownStyle = ComboBoxStyle.DropDownList };
-            DataTable rubrics = rubricBL.GetForDropdown();
-            cboRubric.DataSource = rubrics; cboRubric.DisplayMember = "Details"; cboRubric.ValueMember = "Id";
-            if (rubricId > 0) cboRubric.SelectedValue = rubricId;
-            TextBox txtMarks = new TextBox { Text = marks > 0 ? marks.ToString() : "", Location = new System.Drawing.Point(600, 10), Size = new System.Drawing.Size(80, 28), PlaceholderText = "Marks" };
+            Panel row = new Panel
+            {
+                Height = 45,
+                Dock = DockStyle.Top,
+                BackColor = Color.White,
+                Padding = new Padding(0),
+                Margin = new Padding(0, 0, 0, 2)
+            };
+
+            Label lNum = new Label
+            {
+                Text = (questionRows.Count + 1).ToString(),
+                Location = new Point(8, 12),
+                Size = new Size(25, 25)
+            };
+
+            TextBox txtName = new TextBox
+            {
+                Text = name,
+                Location = new Point(38, 10),
+                Size = new Size(230, 25),
+                PlaceholderText = "e.g. Question "
+            };
+
+            ComboBox cboRubric = new ComboBox
+            {
+                Location = new Point(350, 10),
+                Size = new Size(300, 25),
+                DropDownStyle = ComboBoxStyle.DropDownList
+            };
+            DataTable rubrics = rubricBL.GetForDropdown().Copy();
+            cboRubric.DataSource = rubrics;
+            cboRubric.DisplayMember = "Details";
+            cboRubric.ValueMember = "Id";
+            if (rubricId > 0)
+            {
+                foreach (DataRowView drv in cboRubric.Items)
+                {
+                    if (Convert.ToInt32(drv["Id"]) == rubricId)
+                    { cboRubric.SelectedItem = drv; break; }
+                }
+            }
+
+           
+            TextBox txtMarks = new TextBox
+            {
+                Text = marks > 0 ? marks.ToString() : "",
+                Location = new Point(700, 12),
+                Size = new Size(80, 25)
+            };
             txtMarks.TextChanged += (s, e) => UpdateMarksCounter();
-            Button btnDel = new Button { Text = "X", Location = new System.Drawing.Point(690, 10), Size = new System.Drawing.Size(40, 28), BackColor = System.Drawing.Color.Brown, ForeColor = System.Drawing.Color.White, FlatStyle = FlatStyle.Flat };
+
+          
+            Button btnDel = new Button
+            {
+                Text = "✕",
+                Location = new Point(850, 12), 
+                Size = new Size(50, 35),
+                BackColor = Color.FromArgb(160, 30, 30),
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                Tag = compId
+            };
+            btnDel.FlatAppearance.BorderSize = 0;
             btnDel.Click += (s, e) =>
             {
                 if (compId > 0) componentBL.Delete(compId);
-                pnlQuestionsBody.Controls.Remove(row); questionRows.Remove((txtName, cboRubric, txtMarks, compId)); UpdateMarksCounter();
+                pnlQuestionsBody.Controls.Remove(row);
+                questionRows.Remove((txtName, cboRubric, txtMarks, compId));
+                UpdateMarksCounter();
+                ReNumberRows();
             };
-            row.Controls.AddRange(new System.Windows.Forms.Control[] { lNum, txtName, cboRubric, txtMarks, btnDel });
+
+            row.Controls.AddRange(new Control[] { lNum, txtName, cboRubric, txtMarks, btnDel });
             pnlQuestionsBody.Controls.Add(row);
+            pnlQuestionsBody.Controls.SetChildIndex(row, 0);
             questionRows.Add((txtName, cboRubric, txtMarks, compId));
             UpdateMarksCounter();
-            pnlQuestionsBody.Controls.Add(row);
-            pnlQuestionsBody.Tag = "Updated";
-            row.BringToFront(); 
         }
 
         private void UpdateMarksCounter()
         {
             int used = 0;
             foreach (var (_, _, txtMarks, _) in questionRows)
-                if (int.TryParse(txtMarks.Text, out int m)) used += m;
+            {
+                if (int.TryParse(txtMarks.Text, out int m))
+                    used += m;
+            }
             marksUsed = used;
             UpdateMarksLabel(used);
         }
@@ -75,7 +150,7 @@ namespace MidDb26_2025CS60.Forms
         {
             lblMarksInfo.Text = $"Total: {totalMarks} | Used: {used} | Remaining: {totalMarks - used}";
             lblMarksUsedValue.Text = $"{used} / {totalMarks}";
-            lblMarksInfo.ForeColor = (used > totalMarks) ? System.Drawing.Color.Red : System.Drawing.Color.FromArgb(30, 50, 90);
+            lblMarksInfo.ForeColor = (used > totalMarks) ? Color.Red : Color.FromArgb(30, 50, 90);
         }
 
         private void btnSaveQuestions_Click(object sender, EventArgs e)

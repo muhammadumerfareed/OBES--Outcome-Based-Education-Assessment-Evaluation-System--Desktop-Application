@@ -126,9 +126,10 @@ namespace MidDb26_2025CS60.Forms
             // 
             lblColNum.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblColNum.ForeColor = Color.White;
-            lblColNum.Location = new Point(5, 10);
             lblColNum.Name = "lblColNum";
-            lblColNum.Size = new Size(40, 25);
+            lblColNum.Location = new Point(8, 10);
+            lblColNum.Size = new Size(25, 25);
+            
             lblColNum.TabIndex = 0;
             lblColNum.Text = "#";
             // 
@@ -136,9 +137,9 @@ namespace MidDb26_2025CS60.Forms
             // 
             lblColName.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblColName.ForeColor = Color.White;
-            lblColName.Location = new Point(55, 10);
-            lblColName.Name = "lblColName";
-            lblColName.Size = new Size(260, 25);
+            lblColName.Location = new Point(38, 10);
+            lblColName.Size = new Size(230, 25);
+            lblColName.Text = "Question / Component";
             lblColName.TabIndex = 1;
             lblColName.Text = "Question / Component Name";
             // 
@@ -146,9 +147,9 @@ namespace MidDb26_2025CS60.Forms
             // 
             lblColRubric.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblColRubric.ForeColor = Color.White;
-            lblColRubric.Location = new Point(330, 10);
-            lblColRubric.Name = "lblColRubric";
-            lblColRubric.Size = new Size(180, 25);
+            lblColRubric.Location = new Point(278, 10);
+            lblColRubric.Size = new Size(300, 25);
+            lblColRubric.Text = "Rubric";
             lblColRubric.TabIndex = 2;
             lblColRubric.Text = "Rubric";
             // 
@@ -156,9 +157,9 @@ namespace MidDb26_2025CS60.Forms
             // 
             lblColMarks.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblColMarks.ForeColor = Color.White;
-            lblColMarks.Location = new Point(620, 10);
-            lblColMarks.Name = "lblColMarks";
-            lblColMarks.Size = new Size(100, 25);
+            lblColMarks.Location = new Point(588, 10);
+            lblColMarks.Size = new Size(80, 25);
+            lblColMarks.Text = "Marks";
             lblColMarks.TabIndex = 3;
             lblColMarks.Text = "Marks";
             // 
@@ -166,15 +167,21 @@ namespace MidDb26_2025CS60.Forms
             // 
             lblColRemove.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblColRemove.ForeColor = Color.White;
-            lblColRemove.Location = new Point(760, 10);
-            lblColRemove.Name = "lblColRemove";
+            lblColRemove.Location = new Point(688, 10);
             lblColRemove.Size = new Size(80, 25);
+            lblColRemove.Text = "Remove";
             lblColRemove.TabIndex = 4;
             lblColRemove.Text = "Remove";
             // 
             // pnlQuestionsBody
             // 
-            pnlQuestionsBody.AutoScroll = true;
+            
+      
+            pnlQuestionsBody.Location = new Point(20, 150);  
+            pnlQuestionsBody.Size = new Size(760, 300);      
+            pnlQuestionsBody.AutoScroll = true;             
+            pnlQuestionsBody.Padding = new Padding(2);      // optional, gives spacing around rows
+
             pnlQuestionsBody.BackColor = Color.FromArgb(240, 238, 232);
             pnlQuestionsBody.BorderStyle = BorderStyle.FixedSingle;
             pnlQuestionsBody.Location = new Point(67, 300);
@@ -182,6 +189,7 @@ namespace MidDb26_2025CS60.Forms
             pnlQuestionsBody.Name = "pnlQuestionsBody";
             pnlQuestionsBody.Size = new Size(850, 300);
             pnlQuestionsBody.TabIndex = 3;
+            
             // 
             // lnkAddQuestion
             // 

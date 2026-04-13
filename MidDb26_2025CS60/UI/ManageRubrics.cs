@@ -54,13 +54,42 @@ namespace MidDb26_2025CS60.Forms
 
         private void AddRubricRow(int rubricId, string idText, string detailsText)
         {
-            Panel row = new Panel { Size = new System.Drawing.Size(710, 40), BackColor = System.Drawing.Color.White, Margin = new Padding(0, 2, 0, 2) };
-            Label lblId = new Label { Text = "ID:", Location = new System.Drawing.Point(5, 12), Size = new System.Drawing.Size(25, 20) };
-            TextBox txtId = new TextBox { Text = idText, Location = new System.Drawing.Point(30, 8), Size = new System.Drawing.Size(55, 28), Enabled = rubricId == 0 };
-            TextBox txtDetails = new TextBox { Text = detailsText, Location = new System.Drawing.Point(90, 8), Size = new System.Drawing.Size(390, 28), PlaceholderText = "Rubric criteria..." };
+            Panel row = new Panel
+            {
+                Height = 40,
+                Width = pnlRubrics.Width - 20,
+                BackColor = System.Drawing.Color.White,
+                Margin = new Padding(0, 2, 0, 2)
+            };
 
+            TableLayoutPanel tlp = new TableLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                ColumnCount = 5,
+                RowCount = 1,
+                AutoSize = true
+            };
+            tlp.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));  
+            tlp.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));  
+            tlp.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60f)); 
+            tlp.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+            tlp.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize)); 
 
-            Button btnLevels = new Button { Text = "Levels", Location = new System.Drawing.Point(490, 7), Size = new System.Drawing.Size(80, 28), BackColor = System.Drawing.Color.MidnightBlue, ForeColor = System.Drawing.Color.White, FlatStyle = FlatStyle.Flat, Tag = rubricId };
+            Label lblId = new Label { Text = "ID:", TextAlign = ContentAlignment.MiddleLeft, Dock = DockStyle.Fill };
+            TextBox txtId = new TextBox { Text = idText, Width = 50, Enabled = rubricId == 0, Dock = DockStyle.Fill };
+            TextBox txtDetails = new TextBox { Text = detailsText, PlaceholderText = "Rubric criteria...", Dock = DockStyle.Fill };
+
+            Button btnLevels = new Button
+            {
+                Text = "Levels",
+                BackColor = System.Drawing.Color.MidnightBlue,
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                Tag = rubricId,
+                Width = 80,
+                Dock = DockStyle.Fill
+            };
+            btnLevels.FlatAppearance.BorderSize = 0;
             btnLevels.Click += (s, e) =>
             {
                 int rid = (int)((Button)s).Tag;
@@ -68,16 +97,36 @@ namespace MidDb26_2025CS60.Forms
                 ShowLevelsPopup(rid, txtDetails.Text);
             };
 
-            Button btnDel = new Button { Text = "Del", Location = new System.Drawing.Point(580, 7), Size = new System.Drawing.Size(50, 28), BackColor = System.Drawing.Color.Brown, ForeColor = System.Drawing.Color.White, FlatStyle = FlatStyle.Flat, Tag = rubricId };
+            Button btnDel = new Button
+            {
+                Text = "Del",
+                BackColor = Color.Brown,
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                Tag = rubricId,
+                Width = 60,
+                Dock = DockStyle.Fill
+            };
+            btnDel.FlatAppearance.BorderSize = 0;
             btnDel.Click += (s, e) =>
             {
                 int rid = (int)((Button)s).Tag;
                 if (rid == 0) { pnlRubrics.Controls.Remove(row); return; }
                 if (MessageBox.Show("Delete this rubric and its levels?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                { string res = rubricBL.Delete(rid); if (res == "success") LoadRubricRows(selectedCloId); else MessageBox.Show(res, "Error"); }
+                {
+                    string res = rubricBL.Delete(rid);
+                    if (res == "success") LoadRubricRows(selectedCloId);
+                    else MessageBox.Show(res, "Error");
+                }
             };
 
-            row.Controls.AddRange(new System.Windows.Forms.Control[] { lblId, txtId, txtDetails, btnLevels, btnDel });
+            tlp.Controls.Add(lblId, 0, 0);
+            tlp.Controls.Add(txtId, 1, 0);
+            tlp.Controls.Add(txtDetails, 2, 0);
+            tlp.Controls.Add(btnLevels, 3, 0);
+            tlp.Controls.Add(btnDel, 4, 0);
+
+            row.Controls.Add(tlp);
             pnlRubrics.Controls.Add(row);
             rubricRows.Add((rubricId, txtId, txtDetails));
         }
@@ -85,61 +134,149 @@ namespace MidDb26_2025CS60.Forms
 
         private void ShowLevelsPopup(int rubricId, string rubricName)
         {
-            Form popup = new Form { Text = $"Levels for: {rubricName}", Size = new System.Drawing.Size(600, 400), StartPosition = FormStartPosition.CenterParent, BackColor = System.Drawing.Color.FromArgb(240, 238, 232) };
-            Label lbl = new Label { Text = $"Rubric Levels (ID {rubricId}) — Level 1=Unsatisfactory, 2=Fair, 3=Good, 4=Exceptional", Location = new System.Drawing.Point(10, 10), Size = new System.Drawing.Size(570, 30), ForeColor = System.Drawing.Color.DimGray };
-            Panel pnlLevels = new Panel { Location = new System.Drawing.Point(10, 45), Size = new System.Drawing.Size(570, 270), AutoScroll = true, BackColor = System.Drawing.Color.White };
-            Button btnAddLevel = new Button { Text = "+ Add Level", Location = new System.Drawing.Point(10, 325), Size = new System.Drawing.Size(100, 30), BackColor = System.Drawing.Color.MidnightBlue, ForeColor = System.Drawing.Color.White, FlatStyle = FlatStyle.Flat };
-            Button btnSaveLevels = new Button { Text = "Save Levels", Location = new System.Drawing.Point(470, 325), Size = new System.Drawing.Size(110, 30), BackColor = System.Drawing.Color.MidnightBlue, ForeColor = System.Drawing.Color.White, FlatStyle = FlatStyle.Flat };
+            Form popup = new Form
+            {
+                Text = $"Levels for: {rubricName}",
+                Size = new Size(900, 600),
+                StartPosition = FormStartPosition.CenterParent,
+                BackColor = Color.FromArgb(240, 238, 232),
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                MaximizeBox = false,
+                MinimizeBox = false
+            };
+
+          
+            TableLayoutPanel tlp = new TableLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                RowCount = 3,
+                ColumnCount = 1
+            };
+            tlp.RowStyles.Add(new RowStyle(SizeType.Absolute, 50)); 
+            tlp.RowStyles.Add(new RowStyle(SizeType.Percent, 100f)); 
+            tlp.RowStyles.Add(new RowStyle(SizeType.Absolute, 70)); 
+
+         
+            Label lbl = new Label
+            {
+                Text = $"Rubric Levels (ID {rubricId}) — Level 1=Unsatisfactory, 2=Fair, 3=Good, 4=Excellent",
+                Dock = DockStyle.Fill,
+                TextAlign = ContentAlignment.MiddleLeft,
+                Padding = new Padding(10),
+                ForeColor = Color.DimGray
+            };
+
+            Panel pnlLevels = new Panel
+            {
+                Dock = DockStyle.Fill,
+                AutoScroll = true,
+                BackColor = Color.White,
+                Padding = new Padding(5)
+            };
+
+            FlowLayoutPanel btnPanel = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                FlowDirection = FlowDirection.RightToLeft,
+                Padding = new Padding(10),
+                BackColor = Color.Transparent
+            };
+
+            Button btnAddLevel = new Button
+            {
+                Text = "+ Add Level",
+                Size = new Size(120, 35),
+                BackColor = Color.MidnightBlue,
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat
+            };
+            btnAddLevel.FlatAppearance.BorderSize = 0;
+
+            Button btnSaveLevels = new Button
+            {
+                Text = "Save Levels",
+                Size = new Size(120, 35),
+                BackColor = Color.MidnightBlue,
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat
+            };
+            btnSaveLevels.FlatAppearance.BorderSize = 0;
+
+            btnPanel.Controls.Add(btnSaveLevels);
+            btnPanel.Controls.Add(btnAddLevel);
 
             List<(int levelId, TextBox txtDet, NumericUpDown nudLevel)> levelRows = new();
-
 
             void LoadLevelsData()
             {
                 pnlLevels.Controls.Clear();
                 levelRows.Clear();
                 DataTable dt = levelBL.GetByRubric(rubricId);
-                int y = 5;
+
                 foreach (DataRow r in dt.Rows)
                 {
                     int lid = Convert.ToInt32(r["Id"]);
-                    Panel lr = new Panel { Location = new System.Drawing.Point(0, y), Size = new System.Drawing.Size(565, 38), BackColor = System.Drawing.Color.White };
-                    Label lLvl = new Label { Text = "Level:", Location = new System.Drawing.Point(5, 10), Size = new System.Drawing.Size(44, 20) };
-                    NumericUpDown nud = new NumericUpDown { Minimum = 1, Maximum = 4, Value = Convert.ToInt32(r["MeasurementLevel"]), Location = new System.Drawing.Point(50, 7), Size = new System.Drawing.Size(55, 26) };
-                    TextBox td = new TextBox { Text = r["Details"].ToString(), Location = new System.Drawing.Point(115, 7), Size = new System.Drawing.Size(360, 26) };
-                    Button bd = new Button { Text = "X", Location = new System.Drawing.Point(485, 7), Size = new System.Drawing.Size(35, 26), BackColor = System.Drawing.Color.Brown, ForeColor = System.Drawing.Color.White, FlatStyle = FlatStyle.Flat, Tag = lid };
+
+                    Panel lr = new Panel
+                    {
+                        Height = 42,
+                        Dock = DockStyle.Top,
+                        BackColor = Color.White,
+                        Margin = new Padding(0, 2, 0, 2)
+                    };
+
+                 
+                    Label lLvl = new Label { Text = "Level:", Location = new Point(5, 10), Size = new Size(60, 30) };
+                    NumericUpDown nud = new NumericUpDown { Minimum = 1, Maximum = 4, Value = Convert.ToInt32(r["MeasurementLevel"]), Location = new Point(65, 7), Size = new Size(60, 26) };
+
+                    TextBox td = new TextBox
+                    {
+                        Text = r["Details"].ToString(),
+                        Location = new Point(135, 7),
+                        Width = lr.Width - 180,
+                        Anchor = AnchorStyles.Left | AnchorStyles.Right
+                    };
+
+                    Button bd = new Button
+                    {
+                        Text = "X",
+                        Size = new Size(35, 26),
+                        Location = new Point(lr.Width - 45, 7),
+                        BackColor = Color.Brown,
+                        ForeColor = Color.White,
+                        FlatStyle = FlatStyle.Flat,
+                        Tag = lid,
+                        Anchor = AnchorStyles.Top | AnchorStyles.Right
+                    };
+                    bd.FlatAppearance.BorderSize = 0;
 
                     bd.Click += (s, e2) =>
                     {
                         if (MessageBox.Show("Delete level?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
                             levelBL.Delete(lid);
-                            LoadLevelsData(); // Refresh after delete
+                            LoadLevelsData();
                         }
                     };
 
                     lr.Controls.AddRange(new Control[] { lLvl, nud, td, bd });
                     pnlLevels.Controls.Add(lr);
                     levelRows.Add((lid, td, nud));
-                    y += 42;
                 }
             }
 
-
-
-            btnAddLevel.Click += (s, e2) =>
+            btnAddLevel.Click += (s, e) =>
             {
-                int y = pnlLevels.Controls.Count * 42 + 5;
-                Panel lr = new Panel { Location = new System.Drawing.Point(0, y), Size = new System.Drawing.Size(565, 38), BackColor = System.Drawing.Color.White };
-                Label lLvl = new Label { Text = "Level:", Location = new System.Drawing.Point(5, 10), Size = new System.Drawing.Size(44, 20) };
-                NumericUpDown nud = new NumericUpDown { Minimum = 1, Maximum = 4, Value = 1, Location = new System.Drawing.Point(50, 7), Size = new System.Drawing.Size(55, 26) };
-                TextBox td = new TextBox { PlaceholderText = "Level description...", Location = new System.Drawing.Point(115, 7), Size = new System.Drawing.Size(360, 26) };
+                Panel lr = new Panel { Height = 42, Dock = DockStyle.Top, BackColor = Color.White, Margin = new Padding(0, 2, 0, 2) };
+                Label lLvl = new Label { Text = "Level:", Location = new Point(5, 10), Size = new Size(60, 20) };
+                NumericUpDown nud = new NumericUpDown { Minimum = 1, Maximum = 4, Value = 1, Location = new Point(65, 7), Size = new Size(60, 26) };
+                TextBox td = new TextBox { PlaceholderText = "Level description...", Location = new Point(135, 7), Width = lr.Width - 180, Anchor = AnchorStyles.Left | AnchorStyles.Right };
                 lr.Controls.AddRange(new Control[] { lLvl, nud, td });
                 pnlLevels.Controls.Add(lr);
                 levelRows.Add((0, td, nud));
             };
 
-            btnSaveLevels.Click += (s, e2) =>
+            btnSaveLevels.Click += (s, e) =>
             {
                 foreach (var (lid, td, nud) in levelRows)
                 {
@@ -150,28 +287,50 @@ namespace MidDb26_2025CS60.Forms
                     if (res != "success") { MessageBox.Show(res, "Error"); return; }
                 }
                 MessageBox.Show("Levels saved!", "Done");
-                LoadLevelsData(); // Refresh after save
+                LoadLevelsData();
             };
 
-            popup.Controls.AddRange(new Control[] { lbl, pnlLevels, btnAddLevel, btnSaveLevels });
+            LoadLevelsData();
+
+            tlp.Controls.Add(lbl, 0, 0);
+            tlp.Controls.Add(pnlLevels, 0, 1);
+            tlp.Controls.Add(btnPanel, 0, 2);
+
+            popup.Controls.Add(tlp);
             popup.ShowDialog();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (selectedCloId == -1) { MessageBox.Show("Load a CLO first.", "Info"); return; }
+
             foreach (var (rubricId, txtId, txtDetails) in rubricRows)
             {
                 string details = txtDetails.Text.Trim();
                 if (string.IsNullOrWhiteSpace(details)) continue;
-                string result = rubricId == 0
-                    ? (int.TryParse(txtId.Text.Trim(), out int nId) && nId > 0 ? rubricBL.Add(nId, details, selectedCloId) : "Enter a valid numeric ID.")
-                    : rubricBL.Update(rubricId, details, selectedCloId);
-                if (result != "success") { MessageBox.Show(result, "Error"); return; }
+
+                if (rubricId == 0)
+                {
+
+                    if (!int.TryParse(txtId.Text.Trim(), out int newId) || newId <= 0)
+                    {
+                        MessageBox.Show("Enter a valid numeric ID for new rubric.", "Error");
+                        return;
+                    }
+                    string result = rubricBL.Add(newId, details, selectedCloId);
+                    if (result != "success") { MessageBox.Show(result, "Error"); return; }
+                }
+                else
+                {
+
+                    string result = rubricBL.Update(rubricId, details, selectedCloId);
+                    if (result != "success") { MessageBox.Show(result, "Error"); return; }
+                }
             }
-            MessageBox.Show("Rubrics saved!", "Done"); LoadRubricRows(selectedCloId);
+
+            MessageBox.Show("Rubrics saved!", "Done");
+            LoadRubricRows(selectedCloId);
         }
 
-       
     }
 }
