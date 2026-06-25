@@ -64,7 +64,8 @@ namespace MidDb26_2025CS60.Forms
                 cboLevel.SelectedIndex = -1;
                 Label lMarks = new Label { Text = "—", Location = new System.Drawing.Point(0, 12), Size = new System.Drawing.Size(70, 25), ForeColor = System.Drawing.Color.FromArgb(30, 50, 90) };
                 int capMax = maxLevel, capMarks = compMarks;
-                cboLevel.SelectedIndexChanged += (s, ev) => {
+                cboLevel.SelectedIndexChanged += (s, ev) =>
+                {
                     if (cboLevel.SelectedItem == null) return;
                     DataRowView drv = (DataRowView)cboLevel.SelectedItem;
                     lMarks.Text = resultBL.CalculateMarks(Convert.ToInt32(drv["MeasurementLevel"]), capMax, capMarks).ToString("0.##");
@@ -96,6 +97,11 @@ namespace MidDb26_2025CS60.Forms
                 if (res != "success") { MessageBox.Show(res, "Error"); return; }
             }
             MessageBox.Show("Evaluation saved successfully!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void lblComponents_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

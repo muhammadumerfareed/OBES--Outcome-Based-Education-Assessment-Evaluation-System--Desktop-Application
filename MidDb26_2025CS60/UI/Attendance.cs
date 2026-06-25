@@ -15,8 +15,7 @@ namespace MidDb26_2025CS60.Forms
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            btnLoad.Click += btnLoad_Click;
-            btnSave.Click += btnSave_Click;
+           
         }
 
         private void btnLoad_Click(object sender, EventArgs e)

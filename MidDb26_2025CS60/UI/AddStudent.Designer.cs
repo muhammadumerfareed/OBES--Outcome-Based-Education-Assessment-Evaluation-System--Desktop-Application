@@ -46,109 +46,109 @@
             // lblFirstName
             // 
             lblFirstName.AutoSize = true;
-            lblFirstName.Location = new Point(67, 183);
-            lblFirstName.Margin = new Padding(5, 0, 5, 0);
+            lblFirstName.Location = new Point(80, 220);
+            lblFirstName.Margin = new Padding(6, 0, 6, 0);
             lblFirstName.Name = "lblFirstName";
-            lblFirstName.Size = new Size(110, 25);
+            lblFirstName.Size = new Size(128, 30);
             lblFirstName.TabIndex = 0;
             lblFirstName.Text = "First Name *";
             // 
             // txtFirstName
             // 
-            txtFirstName.Location = new Point(49, 214);
-            txtFirstName.Margin = new Padding(5, 6, 5, 6);
+            txtFirstName.Location = new Point(80, 257);
+            txtFirstName.Margin = new Padding(6, 7, 6, 7);
             txtFirstName.Name = "txtFirstName";
-            txtFirstName.Size = new Size(847, 31);
+            txtFirstName.Size = new Size(1016, 35);
             txtFirstName.TabIndex = 1;
             // 
             // lblLastName
             // 
             lblLastName.AutoSize = true;
-            lblLastName.Location = new Point(67, 285);
-            lblLastName.Margin = new Padding(5, 0, 5, 0);
+            lblLastName.Location = new Point(80, 342);
+            lblLastName.Margin = new Padding(6, 0, 6, 0);
             lblLastName.Name = "lblLastName";
-            lblLastName.Size = new Size(95, 25);
+            lblLastName.Size = new Size(112, 30);
             lblLastName.TabIndex = 2;
             lblLastName.Text = "Last Name";
             // 
             // txtLastName
             // 
-            txtLastName.Location = new Point(67, 317);
-            txtLastName.Margin = new Padding(5, 6, 5, 6);
+            txtLastName.Location = new Point(80, 380);
+            txtLastName.Margin = new Padding(6, 7, 6, 7);
             txtLastName.Name = "txtLastName";
-            txtLastName.Size = new Size(847, 31);
+            txtLastName.Size = new Size(1016, 35);
             txtLastName.TabIndex = 3;
             // 
             // lblEmail
             // 
             lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(67, 387);
-            lblEmail.Margin = new Padding(5, 0, 5, 0);
+            lblEmail.Location = new Point(80, 464);
+            lblEmail.Margin = new Padding(6, 0, 6, 0);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(67, 25);
+            lblEmail.Size = new Size(78, 30);
             lblEmail.TabIndex = 4;
             lblEmail.Text = "Email *";
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(67, 419);
-            txtEmail.Margin = new Padding(5, 6, 5, 6);
+            txtEmail.Location = new Point(80, 503);
+            txtEmail.Margin = new Padding(6, 7, 6, 7);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(847, 31);
+            txtEmail.Size = new Size(1016, 35);
             txtEmail.TabIndex = 5;
             // 
             // lblContact
             // 
             lblContact.AutoSize = true;
-            lblContact.Location = new Point(67, 488);
-            lblContact.Margin = new Padding(5, 0, 5, 0);
+            lblContact.Location = new Point(80, 586);
+            lblContact.Margin = new Padding(6, 0, 6, 0);
             lblContact.Name = "lblContact";
-            lblContact.Size = new Size(73, 25);
+            lblContact.Size = new Size(85, 30);
             lblContact.TabIndex = 6;
             lblContact.Text = "Contact";
             // 
             // txtContact
             // 
-            txtContact.Location = new Point(67, 521);
-            txtContact.Margin = new Padding(5, 6, 5, 6);
+            txtContact.Location = new Point(80, 625);
+            txtContact.Margin = new Padding(6, 7, 6, 7);
             txtContact.Name = "txtContact";
-            txtContact.Size = new Size(847, 31);
+            txtContact.Size = new Size(1016, 35);
             txtContact.TabIndex = 7;
             // 
             // lblRegNo
             // 
             lblRegNo.AutoSize = true;
-            lblRegNo.Location = new Point(67, 590);
-            lblRegNo.Margin = new Padding(5, 0, 5, 0);
+            lblRegNo.Location = new Point(80, 708);
+            lblRegNo.Margin = new Padding(6, 0, 6, 0);
             lblRegNo.Name = "lblRegNo";
-            lblRegNo.Size = new Size(148, 25);
+            lblRegNo.Size = new Size(172, 30);
             lblRegNo.TabIndex = 8;
             lblRegNo.Text = "Registration No *";
             // 
             // txtRegNo
             // 
-            txtRegNo.Location = new Point(67, 623);
-            txtRegNo.Margin = new Padding(5, 6, 5, 6);
+            txtRegNo.Location = new Point(80, 748);
+            txtRegNo.Margin = new Padding(6, 7, 6, 7);
             txtRegNo.Name = "txtRegNo";
-            txtRegNo.Size = new Size(847, 31);
+            txtRegNo.Size = new Size(1016, 35);
             txtRegNo.TabIndex = 9;
             // 
             // lblStatus
             // 
             lblStatus.AutoSize = true;
-            lblStatus.Location = new Point(67, 692);
-            lblStatus.Margin = new Padding(5, 0, 5, 0);
+            lblStatus.Location = new Point(80, 830);
+            lblStatus.Margin = new Padding(6, 0, 6, 0);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(60, 25);
+            lblStatus.Size = new Size(69, 30);
             lblStatus.TabIndex = 10;
             lblStatus.Text = "Status";
             // 
             // txtStatus
             // 
-            txtStatus.Location = new Point(67, 725);
-            txtStatus.Margin = new Padding(5, 6, 5, 6);
+            txtStatus.Location = new Point(80, 870);
+            txtStatus.Margin = new Padding(6, 7, 6, 7);
             txtStatus.Name = "txtStatus";
-            txtStatus.Size = new Size(847, 31);
+            txtStatus.Size = new Size(1016, 35);
             txtStatus.TabIndex = 11;
             // 
             // btnSave
@@ -157,10 +157,10 @@
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(67, 794);
-            btnSave.Margin = new Padding(5, 6, 5, 6);
+            btnSave.Location = new Point(80, 953);
+            btnSave.Margin = new Padding(6, 7, 6, 7);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(850, 87);
+            btnSave.Size = new Size(1020, 104);
             btnSave.TabIndex = 12;
             btnSave.Text = "Save Student";
             btnSave.UseVisualStyleBackColor = false;
@@ -170,10 +170,10 @@
             // 
             pnlHeader.BackColor = Color.FromArgb(30, 50, 90);
             pnlHeader.Controls.Add(lblTitle);
-            pnlHeader.Location = new Point(67, 38);
-            pnlHeader.Margin = new Padding(5, 6, 5, 6);
+            pnlHeader.Location = new Point(80, 46);
+            pnlHeader.Margin = new Padding(6, 7, 6, 7);
             pnlHeader.Name = "pnlHeader";
-            pnlHeader.Size = new Size(850, 106);
+            pnlHeader.Size = new Size(1020, 127);
             pnlHeader.TabIndex = 13;
             // 
             // lblTitle
@@ -182,9 +182,9 @@
             lblTitle.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTitle.ForeColor = Color.White;
             lblTitle.Location = new Point(0, 0);
-            lblTitle.Margin = new Padding(5, 0, 5, 0);
+            lblTitle.Margin = new Padding(6, 0, 6, 0);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(850, 106);
+            lblTitle.Size = new Size(1020, 127);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Add New Student";
             lblTitle.TextAlign = ContentAlignment.MiddleCenter;
@@ -193,19 +193,19 @@
             // 
             lblRequired.AutoSize = true;
             lblRequired.ForeColor = Color.Gray;
-            lblRequired.Location = new Point(67, 894);
-            lblRequired.Margin = new Padding(5, 0, 5, 0);
+            lblRequired.Location = new Point(80, 1073);
+            lblRequired.Margin = new Padding(6, 0, 6, 0);
             lblRequired.Name = "lblRequired";
-            lblRequired.Size = new Size(155, 25);
+            lblRequired.Size = new Size(180, 30);
             lblRequired.TabIndex = 14;
             lblRequired.Text = "* = required fields";
             // 
             // AddStudent
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(240, 238, 232);
-            ClientSize = new Size(1000, 962);
+            ClientSize = new Size(1200, 1044);
             Controls.Add(pnlHeader);
             Controls.Add(lblFirstName);
             Controls.Add(txtFirstName);
@@ -221,7 +221,7 @@
             Controls.Add(txtStatus);
             Controls.Add(btnSave);
             Controls.Add(lblRequired);
-            Margin = new Padding(5, 6, 5, 6);
+            Margin = new Padding(6, 7, 6, 7);
             Name = "AddStudent";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Add New Student";

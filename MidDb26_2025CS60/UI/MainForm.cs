@@ -1,4 +1,4 @@
-using MidDb26_2025CS60.DAL;
+using MidDb26_2025CS60.DL;
 using MidDb26_2025CS60.Forms;
 namespace MidDb26_2025CS60
 {
